@@ -12,6 +12,7 @@
     <meta name="copyright" content="(c) Tetsuwo OISHI">
     <meta name="theme" content="Simgle">
     <title>{block:PostSummary}{PostSummary} &laquo; {/block:PostSummary}{Title}</title>
+
     <!-- VARIABLES/ -->
     <meta name="text:Google Site Verification" content="">
     <meta name="text:Google Analytics" content="">
@@ -56,13 +57,14 @@
     <link rel="stylesheet" type="text/css" href="//static.tumblr.com/clvypew/SFQluegtq/reset.css">
     <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.19/themes/vader/jquery-ui.css">
     <style>
+
         body {
             font-size: 14px;
             line-height: 1.6;
             font-family: Arial, sans-serif;
             /*font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS UI Gothic', 'Lucida Grande', sans-serif;*/
             color: #333;
-            border-top: 5px solid #111;
+            background-color: #000;
             word-break: break-all;
             word-wrap: break-word;
         }
@@ -109,49 +111,41 @@
         #header, #pagebody {
             margin: 0 auto;
             padding: 0 1em;
-            max-width: 740px;
+            max-width: 700px;
             min-width: 240px;
         }
         
         /* HEADER */
         #header { 
-            margin-bottom: 3em; 
             text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
         }
-        #header hgroup { margin: 0; padding: 0; text-align: center; float: left; }
-        #header h1 a { 
-            text-decoration: none; 
-            color: #fff; 
-            padding: .5em 1em; 
-            border-radius: 0 0 5px 5px;
-            background-color: #111;
-            display: inline-block; 
-            font-size: 120%; 
-            font-weight: bold; 
-            -webkit-box-shadow: 0 0 1em rgba( 0, 0, 0, 0.4); 
-            -moz-box-shadow: 0 0 1em rgba( 0, 0, 0, 0.4);
-            box-shadow: 0 0 1em rgba( 0, 0, 0, 0.4);
+        #header hgroup { 
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            float: left;
         }
-        #header h1 a:hover { padding-top: 1em; }
-        #header h1 a small { padding-top: 3px; font-size: 90%; display: block; }
-        #header .search { margin-top: 20px; float: right; }
+        #header h1 a {
+            text-decoration: none;
+            color: #fff;
+            padding: .5em 0;
+            background-color: #000;
+            display: inline-block;
+            font-size: 120%;
+            font-weight: bold;
+        }
+        #header h1 a:hover { position: relative; top: 1px; }
         
         /* PAGEBODY */
-        #pagebody { margin-bottom: 5em; }
-        
-        /* SIDEBAR */
-        #sidebar { }
-        
-        /* MENU */
-        #menu { background-color: #666; padding: 8px 10px; border-radius: 5px;
-                -webkit-box-shadow: 0 0 2em rgba(0, 0, 0, 0.4); -moz-box-shadow: 0 0 2em rgba(0, 0, 0, 0.4); box-shadow: 0 0 2em rgba(0, 0, 0, 0.4); }
-        #menu, #menu a { color: #fff; line-height: 1.8em; }
-        #menu a:hover { color: #8c0; }
-        #menu .fixmb { margin-bottom: 1.5em; }
-        #menu h1 { margin-bottom: .5em; border-bottom: 1px dotted #bbb; color: #bbb; }
-        
+        #pagebody {
+            /*border-radius: 5px;*/
+            background-color: #fff;
+            padding: 1.5em;
+            box-shadow: inset 0 1px .5em rgba(0, 0, 0, .6);
+        }
+
         /* MAIN */
-        #main { margin-top: .5em; text-shadow: none; }
+        #main { text-shadow: none; }
         
         /* FOOTER */
         #footer {
@@ -161,10 +155,6 @@
             text-align: left;
             padding: 30px 0;
             position: relative;
-            background-color: #000;
-        /*    -webkit-box-shadow: 0 0 3em rgba(0, 0, 0, 0.4);
-            -moz-box-shadow: 0 0 3em rgba(0, 0, 0, 0.4);
-            box-shadow: 0 0 3em rgba(0, 0, 0, 0.4);*/
         }
         #footer, #footer a { font-size: 11px; font-weight: bold; line-height: 1.5; color: #fff; text-decoration: none; }
         #footer a:hover { color: #8c0; }
@@ -244,10 +234,9 @@
         
         /* -- DISQUS -- */
         #disqus_thread { padding: 0 .5em; }
-        
+
         /*#tumblr_controls { display: none; }*/
-        
-        
+
         /* POST */
         .post { margin-bottom: 2em; }
         .post-head { margin-bottom: .8em; }
@@ -299,7 +288,6 @@
             margin: 1em 0;
         }
             .post-foot .tags {
-                float :left; 
             }
                 .post-foot .tags a { 
                     float :left; 
@@ -324,9 +312,8 @@
             .post-foot .notes,
             .post-foot time,
             .post-foot .source { 
-                margin-left: 1em;
+                display: inline-block;
                 line-height: 21px;
-                float: right; 
             }
         
         /* -- addthis -- */
@@ -474,19 +461,19 @@
                 {block:Video}{Video-500}{block:Caption}{Caption}{/block:Caption}{/block:Video}
     
                 <footer class="post-foot clearfix">
+                    {block:HasTags}
+                        <p class="tags clearfix">
+                            {block:Tags}
+                                <a href="{TagURL}">{Tag}</a>
+                            {/block:Tags}
+                        </p>
+                    {/block:HasTags}
                     <div class="clearfix">
-                        {block:HasTags}
-                            <p class="tags">
-                                {block:Tags}
-                                    <a href="{TagURL}">{Tag}</a>
-                                {/block:Tags}
-                            </p>
-                        {/block:HasTags}
                         <time datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero} {24HourWithZero}:{Minutes}:{Seconds}">{Year}.{MonthNumberWithZero}.{DayOfMonthWithZero} {24HourWithZero}:{Minutes}</time>
                         {block:ContentSource}
                             <p class="source">Source: <a href="{SourceURL}">{SourceTitle}</a></p>
                         {/block:ContentSource}
-                        <p class="notes">{NoteCountWithLabel}</p>
+                        <span class="notes">{NoteCountWithLabel}</span>
                     </div>
                     <div class="post-social-plugin clearfix">
                         <script>var addthis_share = { templates: '{Title} {Permalink} from @tetsukamp' };</script>
@@ -658,7 +645,7 @@
         }
 
         localStorage._width = $('body').width();
-
+        
         $('a[href^="http"]').not('[href*="' + location.hostname + '"]').attr('target', '_blank');
 
         /* TWITTER */
